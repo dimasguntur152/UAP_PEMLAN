@@ -13,7 +13,12 @@ public class ItemRepository
         try
         {
             File f = new File(DATA_FILE);
-            if (!f.exists()) { f.getParentFile().mkdirs(); f.createNewFile(); return list; }
+            if (!f.exists())
+            {
+                f.getParentFile().mkdirs();
+                f.createNewFile();
+                return list;
+            }
             BufferedReader br = new BufferedReader(new FileReader(f));
             String line;
             while ((line = br.readLine()) != null)
@@ -21,7 +26,8 @@ public class ItemRepository
                 if (!line.trim().isEmpty()) list.add(Item.fromFile(line));
             }
             br.close();
-        } catch (Exception e) {}
+        }
+        catch (Exception e) {}
         return list;
     }
 

@@ -5,12 +5,19 @@ import java.util.UUID;
 
 public class ReportItemMahasiswa extends JFrame
 {
+    // Warna biru tema yang konsisten
+    private final Color BLUE_THEME = new Color(0, 102, 204);
+
     public ReportItemMahasiswa(JFrame parent, String user, Item itemToEdit)
     {
         setTitle(itemToEdit == null ? "Tambah Laporan" : "Update Laporan");
         setSize(500, 450);
         setLocationRelativeTo(parent);
-        setLayout(new GridLayout(6, 2, 10, 10));
+
+        // Menggunakan panel utama dengan border agar ada jarak (padding)
+        JPanel mainPanel = new JPanel(new GridLayout(6, 2, 10, 10));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        mainPanel.setBackground(Color.WHITE);
 
         JTextField txtNama = new JTextField();
         JTextArea txtDeskripsi = new JTextArea();
@@ -28,6 +35,10 @@ public class ReportItemMahasiswa extends JFrame
         JButton btnBatal = new JButton("Batal");
         JButton btnSimpan = new JButton("Simpan");
 
+        // Menerapkan style biru pada tombol
+        styleButton(btnBatal);
+        styleButton(btnSimpan);
+
         btnBatal.addActionListener(e -> dispose());
         btnSimpan.addActionListener(e -> {
             String nama = txtNama.getText().trim();
@@ -37,7 +48,6 @@ public class ReportItemMahasiswa extends JFrame
                 return;
             }
 
-            // VALIDASI: Hanya Huruf dan Spasi
             if (!nama.matches("[a-zA-Z\\s]+"))
             {
                 JOptionPane.showMessageDialog(this, "Nama Barang hanya boleh berisi huruf!");
@@ -52,13 +62,25 @@ public class ReportItemMahasiswa extends JFrame
                 JOptionPane.showMessageDialog(this, "Berhasil!");
                 if (parent instanceof ItemListMahasiswa) ((ItemListMahasiswa) parent).refreshData();
                 dispose();
-            } catch (Exception ex) {}
+            }
+            catch (Exception ex) {}
         });
 
-        add(new JLabel(" Nama Barang:")); add(txtNama);
-        add(new JLabel(" Deskripsi:")); add(new JScrollPane(txtDeskripsi));
-        add(new JLabel(" Lokasi:")); add(txtLokasi);
-        add(new JLabel(" Status:")); add(cbStatus);
-        add(btnBatal); add(btnSimpan);
+        mainPanel.add(new JLabel(" Nama Barang:")); mainPanel.add(txtNama);
+        mainPanel.add(new JLabel(" Deskripsi:")); mainPanel.add(new JScrollPane(txtDeskripsi));
+        mainPanel.add(new JLabel(" Lokasi:")); mainPanel.add(txtLokasi);
+        mainPanel.add(new JLabel(" Status:")); mainPanel.add(cbStatus);
+        mainPanel.add(btnBatal); mainPanel.add(btnSimpan);
+
+        add(mainPanel);
+    }
+
+    // Metode helper untuk desain tombol biru
+    private void styleButton(JButton button) {
+        button.setBackground(BLUE_THEME);
+        button.setForeground(Color.WHITE);
+        button.setFocusPainted(false);
+        button.setFont(new Font("SansSerif", Font.BOLD, 12));
+        button.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 }
