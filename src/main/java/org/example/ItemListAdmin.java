@@ -12,7 +12,6 @@ public class ItemListAdmin extends JFrame
     private JTable table;
     private String status;
 
-    // Warna biru tema yang konsisten
     private final Color BLUE_THEME = new Color(0, 102, 204);
 
     public ItemListAdmin(JFrame parent, String status)
@@ -29,11 +28,9 @@ public class ItemListAdmin extends JFrame
         JButton btnBack = new JButton("Kembali");
         JButton btnDelete = new JButton("Selesai (Hapus)");
 
-        // Menerapkan style biru ke tombol
         styleButton(btnBack);
         styleButton(btnDelete);
 
-        // Logika Kembali
         btnBack.addActionListener(e -> dispose());
 
         // Logika Hapus dengan Validasi Seleksi Baris
@@ -73,7 +70,6 @@ public class ItemListAdmin extends JFrame
             }
         });
 
-        // Panel Bawah dengan background putih dan padding
         JPanel panelBawah = new JPanel();
         panelBawah.setBackground(Color.WHITE);
         panelBawah.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -84,7 +80,6 @@ public class ItemListAdmin extends JFrame
         add(panelBawah, BorderLayout.SOUTH);
     }
 
-    // Metode helper untuk desain tombol biru
     private void styleButton(JButton button) {
         button.setBackground(BLUE_THEME);
         button.setForeground(Color.WHITE);

@@ -11,7 +11,6 @@ public class ItemListMahasiswa extends JFrame
     private JTable table;
     private String status, user;
 
-    // Warna biru tema yang konsisten
     private final Color BLUE_THEME = new Color(0, 102, 204);
 
     public ItemListMahasiswa(JFrame parent, String status, String user)
@@ -25,12 +24,10 @@ public class ItemListMahasiswa extends JFrame
         table = new JTable(model);
         refreshData();
 
-        // Inisialisasi Tombol
         JButton btnBack = new JButton("Kembali");
         JButton btnCreate = new JButton("Tambah Laporan Baru (+)");
         JButton btnUpdate = new JButton("Update Laporan Saya");
 
-        // Menerapkan style biru ke setiap tombol
         styleButton(btnBack);
         styleButton(btnCreate);
         styleButton(btnUpdate);
@@ -61,14 +58,12 @@ public class ItemListMahasiswa extends JFrame
         add(p, BorderLayout.SOUTH);
     }
 
-    // Metode helper untuk desain tombol biru
     private void styleButton(JButton button) {
         button.setBackground(BLUE_THEME);
         button.setForeground(Color.WHITE);
         button.setFocusPainted(false);
         button.setFont(new Font("SansSerif", Font.BOLD, 12));
         button.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        // Menambahkan margin internal tombol
         button.setMargin(new Insets(5, 15, 5, 15));
     }
 

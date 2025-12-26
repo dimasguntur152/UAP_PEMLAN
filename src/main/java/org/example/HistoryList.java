@@ -6,7 +6,6 @@ import java.io.*;
 
 public class HistoryList extends JFrame
 {
-    // Warna biru tema yang konsisten
     private final Color BLUE_THEME = new Color(0, 102, 204);
 
     public HistoryList(JFrame parent, String role, String user)
@@ -34,11 +33,9 @@ public class HistoryList extends JFrame
             System.err.println("Gagal membaca history: " + e.getMessage());
         }
 
-        // Setup Tabel
         JTable table = new JTable(model);
         add(new JScrollPane(table), BorderLayout.CENTER);
 
-        // Setup Tombol Tutup
         JButton back = new JButton("Tutup");
         back.setBackground(BLUE_THEME);
         back.setForeground(Color.WHITE);
@@ -48,7 +45,6 @@ public class HistoryList extends JFrame
         back.setPreferredSize(new Dimension(100, 35));
         back.addActionListener(e -> dispose());
 
-        // Panel bawah untuk menampung tombol agar lebih rapi
         JPanel bottomPanel = new JPanel();
         bottomPanel.setBackground(Color.WHITE);
         bottomPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));

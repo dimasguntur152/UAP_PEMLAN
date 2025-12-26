@@ -5,7 +5,6 @@ import java.awt.*;
 public class Dashboard extends JFrame
 {
     private String role, username;
-    // Menggunakan warna biru yang sama dengan halaman Login
     private final Color BLUE_THEME = new Color(0, 102, 204);
 
     public Dashboard(String role, String username)
@@ -27,7 +26,6 @@ public class Dashboard extends JFrame
         JButton laporBtn = new JButton("Laporkan Barang");
         JButton logoutBtn = new JButton("Logout");
 
-        // Menerapkan style warna biru ke semua tombol
         styleButton(lihatBtn);
         styleButton(riwayatBtn);
         styleButton(laporBtn);
@@ -49,17 +47,16 @@ public class Dashboard extends JFrame
     // Metode untuk mengatur tampilan tombol secara seragam
     private void styleButton(JButton button) {
         button.setBackground(BLUE_THEME);
-        button.setForeground(Color.WHITE); // Teks putih agar kontras
+        button.setForeground(Color.WHITE);
         button.setFont(new Font("SansSerif", Font.BOLD, 14));
-        button.setFocusPainted(false); // Menghilangkan garis putus-putus saat diklik
-        button.setCursor(new Cursor(Cursor.HAND_CURSOR)); // Mengubah kursor saat hover
+        button.setFocusPainted(false);
+        button.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
     private void pilihKategori()
     {
         String[] options = {"Barang Hilang", "Barang Ditemukan"};
-        int res = JOptionPane.showOptionDialog(this, "Pilih Kategori", "Kategori",
-                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        int res = JOptionPane.showOptionDialog(this, "Pilih Kategori", "Kategori", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         if (res == 0) openList("HILANG");
         else if (res == 1) openList("DITEMUKAN");
     }

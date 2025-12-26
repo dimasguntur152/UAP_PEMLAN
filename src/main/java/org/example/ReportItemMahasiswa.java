@@ -5,7 +5,6 @@ import java.util.UUID;
 
 public class ReportItemMahasiswa extends JFrame
 {
-    // Warna biru tema yang konsisten
     private final Color BLUE_THEME = new Color(0, 102, 204);
 
     public ReportItemMahasiswa(JFrame parent, String user, Item itemToEdit)
@@ -35,7 +34,6 @@ public class ReportItemMahasiswa extends JFrame
         JButton btnBatal = new JButton("Batal");
         JButton btnSimpan = new JButton("Simpan");
 
-        // Menerapkan style biru pada tombol
         styleButton(btnBatal);
         styleButton(btnSimpan);
 
@@ -75,8 +73,8 @@ public class ReportItemMahasiswa extends JFrame
         add(mainPanel);
     }
 
-    // Metode helper untuk desain tombol biru
-    private void styleButton(JButton button) {
+    private void styleButton(JButton button)
+    {
         button.setBackground(BLUE_THEME);
         button.setForeground(Color.WHITE);
         button.setFocusPainted(false);
